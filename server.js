@@ -56,6 +56,7 @@ app.use(express.json())
 app.use('/travels', require('./controllers/travelController'))
 app.use('/users', require('./controllers/userController'))
 app.use('/reviews', require('./controllers/reviewController'))
+app.use('/explorer', require('./controllers/exploreController'))
 
 app.listen(PORT, () => {
   console.log('DAS good traveling on port', PORT,)
