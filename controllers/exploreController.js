@@ -5,11 +5,11 @@ const Explore = require('../models/exploreModel')
 
 // GET (index) destination list 
 explorer.get('/', (req, res) => {
-    Explore.find({}, (error, foundExplorer) => {
+    Explore.find({}, (error, foundExplore) => {
         if(error) {
             res.status(400).json({ error: error.message })
         } else {
-            res.status(200).json(foundExplorer)
+            res.status(200).json(foundExplore)
         }
     })
 })
@@ -25,4 +25,4 @@ explorer.patch('/addlikes/:id', (req, res) => {
     })
 })
 
-module.exports = travels
+module.exports = explorer
