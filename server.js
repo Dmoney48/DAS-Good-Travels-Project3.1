@@ -53,8 +53,9 @@ const isAuthenticated = (req, res, next) => {
 
 app.use(express.json())
 
-// app.use('/maps', require('./controllers/mapController'))
-// app.use('/users', require('./controllers/userController'))
+app.use('/maps', require('./controllers/mapController'))
+app.use('/users', require('./controllers/userController'))
+app.use('/reviews', require('./controllers/reviewController'))
 
 app.listen(PORT, () => {
   console.log('DAS good traveling on port', PORT,)

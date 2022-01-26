@@ -11,4 +11,4 @@ const mapSchema = new Schema({
   tags: [{type: String}]
 })
 
-module.exports = model('Map', travelSchema)
+module.exports = model('Map', mapSchema)

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const { Scehma, model } = mongoose;
+const { Schema, model } = mongoose;
 
 
-const userSchema = new Scehma({
+const userSchema = new Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
     favMap: [{
