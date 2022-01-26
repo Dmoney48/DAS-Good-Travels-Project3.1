@@ -5,7 +5,7 @@ const { Schema, model } = mongoose;
 const userSchema = new Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
-    favMap: [{
+    favTravel: [{
         type: Schema.Types.ObjectId,
         ref: 'Travel',
     }]

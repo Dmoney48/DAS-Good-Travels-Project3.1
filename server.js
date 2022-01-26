@@ -3,7 +3,7 @@ const app = express()
 const PORT = 3003
 const mongoose = require('mongoose')
 const cors = require('cors')
-const MONGODB_URI = 'mongodb://127.0.0.1:27017/mapDB'
+const MONGODB_URI = 'mongodb://127.0.0.1:27017/travelDB'
 const session = require('express-session')
 
 //SET CORS Middleware
@@ -53,7 +53,7 @@ const isAuthenticated = (req, res, next) => {
 
 app.use(express.json())
 
-app.use('/maps', require('./controllers/mapController'))
+app.use('/travels', require('./controllers/travelController'))
 app.use('/users', require('./controllers/userController'))
 app.use('/reviews', require('./controllers/reviewController'))
 
