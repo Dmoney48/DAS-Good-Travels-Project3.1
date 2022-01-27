@@ -14,13 +14,15 @@ travels.get('/', (req, res) => {
     })
 })
 
-// POST (create) a destination
-travels.post('/', (req, res) => {
-    Travel.create(req.body, (error, createdTravel) => {
+// DELETE delete a review  
+reviews.delete('/:id', (req, res) => {
+    Review.findByIdAndDelete(req.params.id, (error, deletedReview) => {
         if(error) {
             res.status(400).json({ error: error.message })
+        } else if (deletedReview === null){
+            res.status(404).json({ message: 'Review id not found' })
         } else {
-            res.status(200).json(createdTravel)
+            res.status(200).json({ message: `Review ${deletedReview.name} deleted successfully`})
         }
     })
 })
@@ -35,6 +37,17 @@ travels.put('/:id', (req, res) => {
                 message: `Travel ${updatedTravel.id} updated successfully`,
                 data: updatedTravel 
             })
+        }
+    })
+})
+
+// POST (create) a destination
+travels.post('/', (req, res) => {
+    Travel.create(req.body, (error, createdTravel) => {
+        if(error) {
+            res.status(400).json({ error: error.message })
+        } else {
+            res.status(200).json(createdTravel)
         }
     })
 })

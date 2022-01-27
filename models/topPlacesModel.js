@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 
-const exploreSchema = new Schema({
+const topPlacesSchema = new Schema({
     name: {type: String, require: true},
     location: {type: String, default: true},
     img: {type: String, required: true},
@@ -11,4 +11,4 @@ const exploreSchema = new Schema({
     tags: [{type: String}]
   })
   
-  module.exports = model('Explore', exploreSchema)
+  module.exports = model('TopPlaces', topPlacesSchema)
