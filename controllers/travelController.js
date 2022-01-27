@@ -27,6 +27,18 @@ travels.delete('/:id', (req, res) => {
     })
 })
 
+travels.delete('/:id', (req, res) => {
+    Travel.findByIdAndDelete(req.params.id, (error, deletedTravel) => {
+        if(error){
+            res.status(400).json({ error: error.message})
+        } else if (deletedTravel === null) {
+            res.status(404).json({ message: 'Travel id not Found'})
+        } else {
+            res.status(200).json({ message : `Travel ${deletedTravel.name} deleted Successfully`})
+        }
+    })
+})
+
 // UPDATE (update) a map
 travels.put('/:id', (req, res) => {
     Travel.findByIdAndUpdate(req.params.id, (error, updatedTravel) => {
