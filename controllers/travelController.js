@@ -15,8 +15,8 @@ travels.get('/', (req, res) => {
 })
 
 // DELETE delete a review  
-reviews.delete('/:id', (req, res) => {
-    Review.findByIdAndDelete(req.params.id, (error, deletedReview) => {
+travels.delete('/:id', (req, res) => {
+    Travel.findByIdAndDelete(req.params.id, (error, deletedReview) => {
         if(error) {
             res.status(400).json({ error: error.message })
         } else if (deletedReview === null){
@@ -43,6 +43,7 @@ travels.put('/:id', (req, res) => {
 
 // POST (create) a destination
 travels.post('/', (req, res) => {
+    console.log(req.body)
     Travel.create(req.body, (error, createdTravel) => {
         if(error) {
             res.status(400).json({ error: error.message })
