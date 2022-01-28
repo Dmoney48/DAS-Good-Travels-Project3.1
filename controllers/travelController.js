@@ -71,7 +71,7 @@ travels.patch('/addlikes/:id', (req, res) => {
         if(error) {
             res.status(400).json({error: error.message})
         } else {
-            res.status(200).json({data: updatedTravels})
+            res.status(200).json({data: updatedTravel})
         }
     })
 })

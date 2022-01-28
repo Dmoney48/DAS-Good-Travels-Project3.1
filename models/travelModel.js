@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 
-const mapSchema = new Schema({
+const travelSchema = new Schema({
   name: {type: String, required: true},
   location: {type: String, required: false},
   img: {type: String, required: false},
