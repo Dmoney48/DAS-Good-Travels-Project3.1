@@ -1,9 +1,10 @@
 const express = require('express')
 const app = express()
-const PORT = 3003
+require('dotenv').config()
+const PORT = process.env.PORT
 const mongoose = require('mongoose')
 const cors = require('cors')
-const MONGODB_URI = 'mongodb://127.0.0.1:27017/travelDB'
+const MONGODB_URI = process.env.MONGODBURI
 const session = require('express-session')
 
 //SET CORS Middleware
