@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 
-const mapSchema = new Schema({
+const travelSchema = new Schema({
   name: {type: String, required: true},
   location: {type: String, required: false},
   img: {type: String, required: false},
@@ -11,4 +11,4 @@ const mapSchema = new Schema({
   tags: [{type: String}]
 })
 
-module.exports = model('Travel', mapSchema)
+module.exports = model('Travel', travelSchema)
