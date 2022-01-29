@@ -11,4 +11,5 @@ const topPlacesSchema = new Schema({
     tags: [{type: String}]
   })
   
-  module.exports = model('TopPlaces', topPlacesSchema)
+  const TopPlaces = model('TopPlaces', topPlacesSchema)
+  module.exports = TopPlaces 
