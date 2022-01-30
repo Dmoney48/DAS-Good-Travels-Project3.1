@@ -1,13 +1,14 @@
 const express = require('express')
 const app = express()
-const PORT = 3003
 const mongoose = require('mongoose')
 const cors = require('cors')
-const MONGODB_URI = 'mongodb://127.0.0.1:27017/travelDB'
 const session = require('express-session')
+require('dotenv').config()
+const PORT = process.env.PORT
+const MONGODB_URI = process.env.MONGODBURI
 
 //SET CORS Middleware
-const whitelist = ['http://localhost:3000', 'Your Heroku Appliction']
+const whitelist = ['http://localhost:3000', 'https://das-travels-frontend.herokuapp.com']
 const corsOptions = {
     origin: (origin, callback) => {
         if(whitelist.indexOf(origin) !== -1 || !origin){
@@ -21,7 +22,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-const SESSION_SECRET ='asdf'
+const SESSION_SECRET = process.env.SECRET
 
 app.use(session({
     secret: SESSION_SECRET,
