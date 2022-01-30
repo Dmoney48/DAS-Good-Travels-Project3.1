@@ -1,7 +1,7 @@
 const TopPlaces = require('./models/topPlacesModel')
 const mongoose = require('mongoose')
 
-const MONGODB_URI = process.env.MONGODBURI
+const MONGODB_URI = 'mongodb://127.0.0.1:27017/travelDB'
 const db = mongoose.connection
 
 mongoose.connect(MONGODB_URI, {
