@@ -7,7 +7,7 @@ const exploreSchema = new Schema({
     img: {type: String, required: true},
     description: {type: String,default: 'Best vacation spot ever!!'},
     likes: {type: Number, default: 0},
-    reviews: {type: String, required: true},
+    reviews: {type: String, required: false},
     tags: [{type: String}]
   })
   

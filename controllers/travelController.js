@@ -14,15 +14,27 @@ travels.get('/', (req, res) => {
     })
 })
 
-// DELETE delete a review
+// DELETE delete a review  
 travels.delete('/:id', (req, res) => {
     Travel.findByIdAndDelete(req.params.id, (error, deletedTravel) => {
         if(error) {
             res.status(400).json({ error: error.message })
         } else if (deletedTravel === null){
-            res.status(404).json({ message: 'Review id not found' })
+            res.status(404).json({ message: 'Travel id not found' })
         } else {
-            res.status(200).json({ message: `Review ${deletedTravel.name} deleted successfully`})
+            res.status(200).json({ message: `Travel ${deletedTravel.name} deleted successfully`})
+        }
+    })
+})
+
+travels.delete('/:id', (req, res) => {
+    Travel.findByIdAndDelete(req.params.id, (error, deletedTravel) => {
+        if(error){
+            res.status(400).json({ error: error.message})
+        } else if (deletedTravel === null) {
+            res.status(404).json({ message: 'Travel id not Found'})
+        } else {
+            res.status(200).json({ message : `Travel ${deletedTravel.name} deleted Successfully`})
         }
     })
 })
@@ -43,6 +55,7 @@ travels.put('/:id', (req, res) => {
 
 // POST (create) a destination
 travels.post('/', (req, res) => {
+    console.log(req.body)
     Travel.create(req.body, (error, createdTravel) => {
         if(error) {
             res.status(400).json({ error: error.message })
@@ -58,7 +71,7 @@ travels.patch('/addlikes/:id', (req, res) => {
         if(error) {
             res.status(400).json({error: error.message})
         } else {
-            res.status(200).json({data: updatedTravels})
+            res.status(200).json({data: updatedTravel})
         }
     })
 })
