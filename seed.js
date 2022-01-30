@@ -1,8 +1,9 @@
 const TopPlaces = require('./models/topPlacesModel')
 const mongoose = require('mongoose')
 
-const MONGODB_URI = 'mongodb://127.0.0.1:27017/travelDB'
+const MONGODB_URI = process.env.MONGODBURI
 const db = mongoose.connection
+require('dotenv').config()
 
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
