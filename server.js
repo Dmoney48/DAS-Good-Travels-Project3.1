@@ -3,7 +3,6 @@ const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
 const session = require('express-session')
-const { MongoDBStore } = require('connect-mongodb-session')
 require('dotenv').config()
 const PORT = 3003
 const MONGODB_URI = process.env.MONGODBURI
