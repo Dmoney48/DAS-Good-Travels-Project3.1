@@ -9,7 +9,7 @@ mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, () => {
-    console.log('Welcome to the Database!')
+    console.log('Seeded the Database!')
 })
 
 TopPlaces.get('/seed', async (req, res) => {
