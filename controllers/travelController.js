@@ -22,7 +22,7 @@ travels.get('/', (req, res) => {
 })
 
 // DELETE delete a review  
-travels.delete('/:id', isAuthenticated, (req, res) => {
+travels.delete('/:id', (req, res) => {
     Travel.findByIdAndDelete(req.params.id, (error, deletedTravel) => {
         if(error) {
             res.status(400).json({ error: error.message })
@@ -34,17 +34,17 @@ travels.delete('/:id', isAuthenticated, (req, res) => {
     })
 })
 
-travels.delete('/:id', isAuthenticated,(req, res) => {
-    Travel.findByIdAndDelete(req.params.id, (error, deletedTravel) => {
-        if(error){
-            res.status(400).json({ error: error.message})
-        } else if (deletedTravel === null) {
-            res.status(404).json({ message: 'Travel id not Found'})
-        } else {
-            res.status(200).json({ message : `Travel ${deletedTravel.name} deleted Successfully`})
-        }
-    })
-})
+// travels.delete('/:id', isAuthenticated,(req, res) => {
+//     Travel.findByIdAndDelete(req.params.id, (error, deletedTravel) => {
+//         if(error){
+//             res.status(400).json({ error: error.message})
+//         } else if (deletedTravel === null) {
+//             res.status(404).json({ message: 'Travel id not Found'})
+//         } else {
+//             res.status(200).json({ message : `Travel ${deletedTravel.name} deleted Successfully`})
+//         }
+//     })
+// })
 
 // UPDATE (update) a map
 travels.put('/:id', (req, res) => {
@@ -61,7 +61,7 @@ travels.put('/:id', (req, res) => {
 })
 
 // POST (create) a destination
-travels.post('/', isAuthenticated,(req, res) => {
+travels.post('/', (req, res) => {
     console.log(req.body)
     Travel.create(req.body, (error, createdTravel) => {
         if(error) {
@@ -166,7 +166,7 @@ travels.get('/seed', async (req, res) => {
   })
 
 // PATCH -- incrementing likes
-travels.patch('/addlikes/:id', isAuthenticated,(req, res) => {
+travels.patch('/addlikes/:id', (req, res) => {
     Travel.findByIdAndUpdate(req.params.id, { $inc: {likes:1}}, {new:true}, (error, updatedTravel) => {
         if(error) {
             res.status(400).json({error: error.message})
