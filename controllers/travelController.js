@@ -2,6 +2,13 @@ const express = require('express')
 const travels = express.Router()
 const Travel = require('../models/travelModel')
 
+const isAuthenticated = (req, res, next) => {
+    if(req.session.currentUser){
+        next()
+    } else{
+        res.status(403).json({ message: "Login is required"})
+    }
+}
 
 // GET (index) destination list 
 travels.get('/', (req, res) => {
@@ -15,7 +22,7 @@ travels.get('/', (req, res) => {
 })
 
 // DELETE delete a review  
-travels.delete('/:id', (req, res) => {
+travels.delete('/:id', isAuthenticated, (req, res) => {
     Travel.findByIdAndDelete(req.params.id, (error, deletedTravel) => {
         if(error) {
             res.status(400).json({ error: error.message })
@@ -27,7 +34,7 @@ travels.delete('/:id', (req, res) => {
     })
 })
 
-travels.delete('/:id', (req, res) => {
+travels.delete('/:id', isAuthenticated,(req, res) => {
     Travel.findByIdAndDelete(req.params.id, (error, deletedTravel) => {
         if(error){
             res.status(400).json({ error: error.message})
@@ -54,7 +61,7 @@ travels.put('/:id', (req, res) => {
 })
 
 // POST (create) a destination
-travels.post('/', (req, res) => {
+travels.post('/', isAuthenticated,(req, res) => {
     console.log(req.body)
     Travel.create(req.body, (error, createdTravel) => {
         if(error) {
@@ -159,7 +166,7 @@ travels.get('/seed', async (req, res) => {
   })
 
 // PATCH -- incrementing likes
-travels.patch('/addlikes/:id', (req, res) => {
+travels.patch('/addlikes/:id', isAuthenticated,(req, res) => {
     Travel.findByIdAndUpdate(req.params.id, { $inc: {likes:1}}, {new:true}, (error, updatedTravel) => {
         if(error) {
             res.status(400).json({error: error.message})
