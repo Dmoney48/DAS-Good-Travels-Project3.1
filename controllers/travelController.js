@@ -3,7 +3,7 @@ const travels = express.Router()
 const Travel = require('../models/travelModel')
 
 
-// GET (index) destination list
+// GET (index) destination list 
 travels.get('/', (req, res) => {
     Travel.find({}, (error, foundTravels) => {
         if(error) {
@@ -16,13 +16,13 @@ travels.get('/', (req, res) => {
 
 // DELETE delete a review  
 travels.delete('/:id', (req, res) => {
-    Travel.findByIdAndDelete(req.params.id, (error, deletedTravel) => {
+    Travel.findByIdAndDelete(req.params.id, (error, deletedReview) => {
         if(error) {
             res.status(400).json({ error: error.message })
-        } else if (deletedTravel === null){
-            res.status(404).json({ message: 'Travel id not found' })
+        } else if (deletedReview === null){
+            res.status(404).json({ message: 'Review id not found' })
         } else {
-            res.status(200).json({ message: `Travel ${deletedTravel.name} deleted successfully`})
+            res.status(200).json({ message: `Review ${deletedReview.name} deleted successfully`})
         }
     })
 })
@@ -45,9 +45,9 @@ travels.put('/:id', (req, res) => {
         if(error) {
             res.status(400).json({ error: error.message })
         } else {
-            res.status(200).json({
+            res.status(200).json({ 
                 message: `Travel ${updatedTravel.id} updated successfully`,
-                data: updatedTravel
+                data: updatedTravel 
             })
         }
     })
