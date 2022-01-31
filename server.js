@@ -7,6 +7,7 @@ const { MongoDBStore } = require('connect-mongodb-session')
 require('dotenv').config()
 const PORT = 3003
 const MONGODB_URI = process.env.MONGODBURI
+const MongoDBStore = require('connect-mongodb-session')(session)
 
 //SET CORS Middleware
 const whitelist = ['http://localhost:3000', 'https://das-good-travels-new-frontend.herokuapp.com/']
