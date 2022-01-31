@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const session = require('express-session')
 require('dotenv').config()
-const PORT = 3003
+const PORT = process.env.PORT
 const MONGODB_URI = process.env.MONGODBURI
 const MongoDBStore = require('connect-mongodb-session')(session)
 
