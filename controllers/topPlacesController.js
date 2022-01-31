@@ -14,6 +14,8 @@ topplaces.get('/', (req, res) => {
     })
 })
 
+
+
 // PATCH -- incrementing likes
 topplaces.patch('/addlikes/:id', (req, res) => {
     TopPlaces.findByIdAndUpdate(req.params.id, { $inc: {likes:1}}, {new:true}, (error, updatedTopPlaces) => {
