@@ -9,7 +9,7 @@ const MONGODB_URI = process.env.MONGODBURI
 const MongoDBStore = require('connect-mongodb-session')(session)
 
 //SET CORS Middleware
-const whitelist = ['http://localhost:3000', 'https://das-good-travels-new-frontend.herokuapp.com/']
+const whitelist = ['http://localhost:3000', 'https://das-good-travels-new-frontend.herokuapp.com']
 const corsOptions = {
     origin: (origin, callback) => {
         if(whitelist.indexOf(origin) !== -1 || !origin){
@@ -23,7 +23,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-const SESSION_SECRET = process.env.SECRET
+const SESSION_SECRET = process.env.SESSION_SECRET
 app.set('trust proxy', 1 )
 app.use(session({
     secret: SESSION_SECRET,
